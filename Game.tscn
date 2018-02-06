@@ -1,52 +1,18 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scripts/NumberPanel.gd" type="Script" id=1]
+[ext_resource path="res://NumberPanel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/SlotContainer.gd" type="Script" id=2]
 
 [node name="Game" type="Node" index="0"]
 
-[node name="NumberPanel" type="Panel" parent="." index="0"]
+_sections_unfolded = [ "Pause" ]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 33.0
-margin_top = 23.0
-margin_right = 93.0
-margin_bottom = 83.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-script = ExtResource( 1 )
-_sections_unfolded = [ "Rect" ]
-__meta__ = {
-"_edit_group_": true
-}
-preview_visibiliy = false
+[node name="NumberPanel" parent="." index="0" instance=ExtResource( 1 )]
 
-[node name="Label" type="Label" parent="NumberPanel" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 64.0
-margin_bottom = 64.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "8"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Rect" ]
+margin_left = 34.0
+margin_top = 26.0
+margin_right = 90.0
+margin_bottom = 82.0
 
 [node name="SlotContainer" type="PanelContainer" parent="." index="1"]
 
@@ -64,7 +30,42 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 2 )
-_sections_unfolded = [ "Visibility" ]
-border_highlight_visible = true
+_sections_unfolded = [ "Rect", "Visibility" ]
+
+[node name="PanelContainer" type="PanelContainer" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 176.0
+margin_top = 151.0
+margin_right = 248.0
+margin_bottom = 223.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 2 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="PanelContainer2" type="PanelContainer" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 287.0
+margin_top = 151.0
+margin_right = 359.0
+margin_bottom = 223.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 2 )
+_sections_unfolded = [ "Rect" ]
 
 

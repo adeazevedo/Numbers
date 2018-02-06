@@ -1,14 +1,30 @@
 
-extends "res://scripts/DroppableContainer.gd"
+extends "res://scripts/gui/DroppableContainer.gd"
+
+signal slot_cleared
 
 var slot = null
 
+func _receive (obj):
+	if !obj is load("res://scripts/NumberPanel.gd"): return false
+	if  slot != null: return false
 
-func _ready():
-	connect("object_dropped", self, "receive_number")
+	slot = obj
+	return ._receive(obj)
 
 
-func receive_number(number_panel):
-	slot = number_panel
-	DragHandler.drop(self)
+func clear():
+	if slot == null: return
 
+	remove_child(slot)
+	clear_slot()
+	emit_signal("slot_cleared")
+
+
+func clear_slot():
+	slot = null
+	print("cleared")
+
+
+func drag_release (obj):
+	clear()

@@ -1,5 +1,15 @@
+tool
+extends "res://scripts/gui/DraggablePanel.gd"
 
-extends "res://scripts/DraggablePanel.gd"
+export(int) var value = 0 setget set_value, get_value
 
-func _ready():
-	set_preview_visible(true)
+
+func get_value():
+	return value
+
+
+func set_value (v):
+	value = v
+
+	if has_node("Label"):
+		$Label.text = String(v)
