@@ -1,4 +1,4 @@
-tool
+
 extends Panel
 
 signal on_begin_drag
@@ -8,8 +8,11 @@ signal on_end_drag
 var preview = null
 var dragging = false
 
+
 func _gui_input (event):
-	if Mouse.is_pressed(BUTTON_LEFT, event):
+	if Engine.editor_hint: return
+
+	if Mouse.is_pressed(event, BUTTON_LEFT):
 		dragging = true
 
 	if dragging and Mouse.is_in_motion(event):
@@ -23,7 +26,7 @@ func _gui_input (event):
 
 		emit_signal("on_drag")
 
-	if dragging and Mouse.is_released(BUTTON_LEFT, event):
+	if dragging and Mouse.is_released(event, BUTTON_LEFT):
 		if preview == null: return
 
 		dragging = false

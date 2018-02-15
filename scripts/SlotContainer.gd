@@ -28,3 +28,9 @@ func clear_slot():
 
 func drag_release (obj):
 	clear()
+
+
+func get_value():
+	if slot == null: return null
+
+	return slot.value

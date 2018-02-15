@@ -1,4 +1,4 @@
-tool
+
 extends Node
 
 var position = Vector2()
@@ -10,28 +10,19 @@ func _input (event):
 	if !(event is InputEventMouseButton or event is InputEventMouseMotion):
 		return
 
-	previous_event = current_event
-	current_event = event
 	position = get_viewport().get_mouse_position()
 
 
-func is_pressed (button = BUTTON_LEFT, event = current_event):
+func is_pressed (event, button = BUTTON_LEFT):
 	return 	event is InputEventMouseButton and \
 			event.button_mask & button and \
 			event.pressed
 
 
-func is_released (button = BUTTON_LEFT, event = current_event):
+func is_released (event, button = BUTTON_LEFT):
 	return	event is InputEventMouseButton and \
 			!event.pressed and \
 			event.button_index == button
-
-
-func is_click (button = BUTTON_LEFT, event = current_event):
-	if previous_event == null: return false
-
-	return 	is_pressed(previous_event, button) and \
-			is_released(event, button)
 
 
 static func is_in_motion (event):
@@ -52,17 +43,3 @@ func is_holding_right (event):
 
 func is_hovering(event, container):
 	return 	container.get_global_rect().has_point(event.position)
-
-
-func exited (container, event = current_event):
-	if previous_event == null: return true
-
-	return 	is_hovering(container, previous_event) and \
-			!is_hovering(container, event)
-
-
-func entered (container, event = current_event):
-	if previous_event == null: return true
-
-	return 	!is_hovering(container, previous_event) and \
-			is_hovering(container, event)
